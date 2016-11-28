@@ -1,0 +1,152 @@
+
+
+<ion-view class="title" view-title="Bienvenue ">
+
+	<ion-content class="has-header has-subheader gris" ng-controller="changerAccueil">
+		<div class="row">
+			<div class="button-bar" ng-class="class">
+			  <a class="button button-small barBoutton {{ class.class1 }}" ng-click="changeClass1()" onclick="afficherdiv1('div1','div2','div3');">Nouvelles offres</a>
+			  <a class="button button-small barBoutton {{ class.class2 }}" ng-click="changeClass2()" onclick="afficherdiv1('div2','div1','div3');">Mes annonces</a>
+			  <a class="button button-small barBoutton {{ class.class3 }}" ng-click="changeClass3()" onclick="afficherdiv1('div3','div1','div2');">Mes candidatures</a>
+			</div>
+		</div> 
+		
+		<ion-scroll direction="x" class="noScroll" id="div1" scrollbar-x="false">
+		
+            <div class="row" ng-controller="AnnoncesCtrl">
+			
+                <div class="divOffre col col-75 item" ng-repeat="annonce in annonces | limitTo: 5"><a class="lienAnnonce" href="#/annonce/{{annonce.IdAnnonce}}" >
+                    <div class="row">
+                        <div class="col col-90"><p><span class="intitule">{{annonce.Intitule}}</span></br><span class="opaGris">Poste basé à {{annonce.Localisation}}</span></p></div>
+						<div class="col"><i class="icon ion-chevron-right opaGris test"></i></div>
+					</div>	</a>
+                </div>
+            </div>
+        
+			
+        </ion-scroll>
+		
+		<ion-scroll direction="x" class="noScroll" id="div2" scrollbar-x="false">
+		
+            <div class="row">
+			
+                <div class="divOffre col col-75 item"><a class="lienAnnonce" href="#/annonce">
+                    <div class="row">
+                        <div class="col col-90"><p>Non disponible (mes annonces)</br><span class="opaGris">Non disponible</span></p></div>
+						<div class="col"><i class="icon ion-chevron-right opaGris"></i></div>
+					</div>	</a>
+                </div>
+				
+            </div>
+			
+        </ion-scroll>
+		
+		<ion-scroll direction="x" class="noScroll" id="div3" scrollbar-x="false">
+		
+            <div class="row">
+			
+                <div class="divOffre col col-75 item"><a class="lienAnnonce" href="#/annonce">
+                    <div class="row">
+                        <div class="col col-90"><p>Non disponible (mes candidatures)</br><span class="opaGris">Non disponible</span></p></div>
+						<div class="col"><i class="icon ion-chevron-right opaGris"></i></div>
+					</div>	</a>
+                </div>
+				
+            </div>
+			
+        </ion-scroll>
+		
+		
+
+		<div class="row" style="width:100%; text-align:center;">
+		
+			<div class="col col-10">
+			</div> 
+			
+			<label class="item-input zoneRecherche col-80">
+			
+			<div style="background-color:white;border-radius:5px;padding-left:10px;">
+			  <input type="text" placeholder="Rechercher un job..." ng-model="recherche">
+			</div> 
+			
+			<a href="#/toutesLesAnnonces/{{recherche}}"><button class="button button-icon icon ion-search"></button></a>
+
+			</label>
+			
+			<div class="col col-10">
+			</div> 
+			
+		</div>
+		
+		<div class="row">
+		
+			<div class="col col-5">
+			</div>
+			
+			<div class="col col-90" ng-controller="AnnoncesCtrl">
+				
+				  <a class="button button-block BtnViolet " href="#/toutesLesAnnonces/">ACCEDER A TOUTES LES OFFRES <span class="nbAnnonce">{{nombresAnnonces}}</span></a>
+				
+			</div>
+			
+			<div class="col col-5">
+			</div>
+			
+		</div>
+		
+		<div class="row row-center">
+		
+			<div class="col divimg">
+				<img class="imgcmne" src="img/cmne.png">
+			</div>
+			
+		</div>
+		
+		<div class="row row-center">
+		
+			<div class="col divimg">
+				<img class="imgcmne" src="img/CM.png">
+			</div>
+			
+		</div>
+
+		<div class="conseil">
+	  
+			<div class="row">
+			
+				<div class="col col-10">
+					<img class="smiley" src="img/smiley.png">
+				</div>
+				
+				<div class="col">
+					<h5>Le conseil du moment</h5>
+				</div>
+			
+			</div>
+	   
+			<p class="texteConseil">
+				Vous cherchez un stage? Sachez que depuis septembre 2015, tous les stages de plus de 2 mois doivent obligatoirement être rémunérés.
+			</p>
+		
+		</div>
+
+		<ion-slide-box on-slide-changed="slideHasChanged($index)">
+		  <ion-slide>
+		    <div><center><img class="caroustyle" src="img/ionic.png"></center></div>
+		  </ion-slide>
+		  <ion-slide>
+		    <div><center><img class="caroustyle" src="img/imgAnnonce.png"></center></div>
+		  </ion-slide>
+		  <ion-slide>
+		    <div><center><img class="caroustyle" src="img/smiley.png"></center></div>
+		  </ion-slide>
+		  <ion-slide>
+		    <div><center><img class="caroustyle" src="img/smiley.png"></center></div>
+		  </ion-slide>
+		</ion-slide-box>
+
+
+
+	</ion-content>
+	
+</ion-view>

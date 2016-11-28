@@ -1,0 +1,69 @@
+
+<ion-view class="title" view-title="Candidature spontanée">
+<ion-content class="has-header has-subheader gris" ng-controller="MailgunController">
+
+
+    <div class="row row4">
+        <div class="col-80">
+            <p class="text-title-link" style="text-decoration">Envoyez nous votre candidature spontanée!</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div>
+            <p class="text-title-link">Qui êtes-vous?</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col col-100 ">
+        <h4>Prénom</h4>
+        <label class="item item-input ">
+            <textarea id="prenomInput" type="text" placeholder="Votre prénom..." ng-model="prenomInput"></textarea>
+        </label>
+
+        <h4>Nom</h4>
+        <label class="item item-input ">
+            <textarea id="nomInput" type="text" placeholder="Votre nom..." ng-model="nomInput"></textarea>
+        </label>
+
+        <h4>Coordonnées</h4>
+        <label class="item item-input ">
+            <textarea id="coordInput" type="text" placeholder="Vos coordonnées ici..." ng-model="coordInput"></textarea>
+        </label>
+
+        <h4>Formation</h4>
+        <label class="item item-input ">
+            <textarea id="formInput" type="text" placeholder="Votre formation ici..." ng-model="formInput"></textarea>
+        </label>
+
+        <h4>Expérience professionnelle</h4>
+        <label class="item item-input ">
+            <textarea id="expProInput" type="text" placeholder="Vos exériences professionnelles ici..." ng-model="expProInput"></textarea>
+        </label>
+        </div>
+    </div>
+
+    <div class="row">
+        <div>
+            <p class="text-title-link">Faites-nous part de votre motivation ci-après.</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col col-100 ">
+        <label class="item item-input ">
+            <textarea id="motivInput" type="text" placeholder="Pourquoi êtes-vous motivé?" ng-model="motivInput"></textarea>
+        </label>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col col-33 col-offset-67 " >
+            <a style="text-decoration:none;" href="#"><button class="button button-block validation_button" style="text-transform:uppercase;" ng-click="sendMotivation(prenomInput,nomInput,coordInput,formInput,expProInput,motivInput)">Envoyer</button></a>
+        </div>
+    </div>
+
+</ion-content>
+    
+</ion-view>

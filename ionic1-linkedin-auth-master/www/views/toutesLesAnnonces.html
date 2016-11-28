@@ -1,0 +1,34 @@
+<ion-view class="title" view-title="Toutes les Annonces">
+
+	<ion-content class="has-header has-subheader gris" ng-controller="AnnoncesCtrl">
+
+		<div class="bar bar-header item-input-inset">
+		  <label class="item-input-wrapper">
+			<i class="icon ion-ios-search placeholder-icon"></i>
+			<input type="search" ng-model="q" placeholder="Rechercher dans les annonces..." aria-label="filter annonces" />
+		  </label>
+			
+		</div>
+		<div >
+				
+				<ul class="list" >
+					<li class="item" ng-repeat="annonce in annonces | filter:q as results">
+						<div class="divOffre2">
+							<a class="lienAnnonce" href="#/annonce/{{annonce.IdAnnonce}}">
+								<div class="row">
+									<div class="col col-90"><p>{{annonce.Intitule}}</br><span class="opaGris">Poste basé à {{annonce.Localisation}}</span></p></div>
+									<div class="col"><i class="icon ion-chevron-right opaGris"></i></div>
+								</div>	
+							</a>
+						</div>
+					</li>
+					<li class="rechercheVide" ng-if="results.length === 0">
+				      <center><strong>Aucun résultat</strong></center>
+				    </li>
+				</ul>
+
+		</div>
+		
+	</ion-content>
+	
+</ion-view>

@@ -1,0 +1,51 @@
+
+<ion-view class="title" view-title="Feedback" ng-controller="MailgunController">
+<ion-content class="has-header has-subheader gris" ng-controller="FeedbackCtrl">
+
+
+    <div class="row row4">
+        <div class="col-80">
+            <p class="text-title-link" style="text-decoration">Votre avis nous intéresse !</p>
+        </div>
+    </div>
+
+    <div >
+
+        <p class="question">1. Que pensez-vous du design de l'application?</p>
+        <h2><ionic-ratings ratingsobj='ratingsObject1' index='$index'></ionic-ratings></h2>
+
+        <p class="question">2. Que pensez-vous de la fluidité de l'application?</p>
+        <h2><ionic-ratings ratingsobj='ratingsObject2' index='$index'></ionic-ratings></h2>
+
+        <p class="question">3. L'application répond elle à vos attentes?</p>
+        <h2><ionic-ratings ratingsobj='ratingsObject3' index='$index'></ionic-ratings></h2>
+
+		<span id="valobjet1" style="display:none;">{{ratingsObject1.rating}}</span>
+		<span id="valobjet2" style="display:none;">{{ratingsObject2.rating}}</span>
+        <span id="valobjet3" style="display:none;">{{ratingsObject3.rating}}</span>
+
+    </div>
+        
+    <div class="row" style="margin-top:15px;">
+        <div>
+            <p class="text-title-link">Laissez nous un commentaire.</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col col-100 ">
+        <label class="item item-input ">
+            <textarea id="feedbackInput" type="text" placeholder="Ecrire votre message ici" ng-model="feedbackInput"></textarea>
+        </label>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col col-33 col-offset-67 " >
+            <a style="text-decoration:none;" href="#"><button class="button button-block validation_button" style="text-transform:uppercase;" ng-click="sendFeedback(feedbackInput)">Envoyer</button></a>
+        </div>
+    </div>
+
+</ion-content>
+    
+</ion-view>

@@ -1,0 +1,230 @@
+<ion-view class="title" view-title="Annonce">
+	
+	<ion-content class="has-header has-subheader gris"  ng-controller="changer">
+	<div ng-controller="AnnonceCtrl">
+		<div class="row">
+		
+			<h5 class="titre">{{annonce.Intitule}}</h5>
+		</div>
+		
+		<div class="row row-center">
+		
+			<div class="col divimg">
+				<img class="imgcmne" src="img/imgAnnonce.png">
+			</div>
+			
+		</div>
+		
+		<div class="divDetOffre">
+			<div class="row">
+				<a onclick="masquer_div('voirDetail','barre'); test('Intitule'); test('NiveauxExperience'); test('NiveauxFormation'); test('Localisation'); test('DatePublication'); test('DateLimite'); test('NatureContrat'); test('DescriptifSociete'); test('MissionPrincipale'); test('ActivitesTaches'); test('ConnaissancesCompetences'); test('Savoirs'); test('CertificationsAccreditations'); test('InformationsComplementaires'); test('IdResponsableRH');"><img class="icon-Socmne" id="testIcon" src="img/detail-button.png" /></a>
+				<h5 class="detailOffre">Détails de l'offre</h5>
+			</div>
+			
+			<hr id="barre"/>
+			
+			<div id="voirDetail">
+
+				<p>
+					<span class="titreOffre"> Intitulé:</span>
+					<span id="Intitule"> {{Intitule}}</span>
+				</p>
+				
+				<p>
+					<span class="titreOffre"> Niveau Experience:</span>
+					<span id="NiveauxExperience"> {{NiveauxExperience}}</span>
+				</p>
+				
+				<p>
+					<span class="titreOffre"> Niveau Formation:</span>
+					<span id="NiveauxFormation"> {{NiveauxFormation}}</span>
+				</p>
+				
+				<p>
+					<span class="titreOffre"> Localisation:</span>
+					<span id="Localisation"> {{Localisation}}</span>
+				</p>
+				
+				<p>
+					<span class="titreOffre"> Date publication:</span>
+					<span id="DatePublication"> {{DatePublication}}</span>
+				</p>
+				
+				<p>
+					<span class="titreOffre"> Date limite:</span>
+					<span id="DateLimite"> {{DateLimite}}</span>
+				</p>
+				
+				<p>
+					<span class="titreOffre"> Nature du contrat:</span>
+					<span id="NatureContrat"> {{NatureContrat}}</span>
+				</p>
+				</br>
+				
+				<p><u>Descriptif Societe:</u></p>
+
+				<p id="DescriptifSociete" >
+				</br>
+				{{DescriptifSociete}}</p>
+				</br>
+				
+				
+				<p><u>Mission Principale:</u></p>
+				
+				<p id="MissionPrincipale">
+				</br>
+				{{MissionPrincipale}}</p>
+				</br>
+				
+				<p><u>Activités/Tâches:</u></p>
+				
+				<p id="ActivitesTaches">
+				</br>
+				{{ActivitesTaches}}</p>
+				</br>
+
+				<p><u>Connaissance/Compétences/Savoirs:</u></p>
+				
+				<p id="ConnaissancesCompetences">
+				</br>
+				{{ConnaissancesCompetences}}</p>
+				</br>
+
+				<p><u>Savoirs:</u></p>
+				
+				<p id="Savoirs">
+				</br>
+				{{Savoirs}}</p>
+				</br>
+				
+				<p><u>Certifications et Accreditations:</u></p>
+
+				<p id="CertificationsAccreditations">
+				</br>
+				{{CertificationsAccreditations}}</p>
+				</br>
+				
+				<p><u>Infos Complémentaires:</u></p>
+
+				<p id="InformationsComplementaires">
+				</br>
+				{{InformationsComplementaires}}</p>
+				</br>
+				
+				<p><u>	(IdResponsableRH)</u></p>
+				
+				<p id="IdResponsableRH">
+				</br>
+				{{IdResponsableRH}}</p>
+				</br>
+
+			</div>
+			
+			<div class="row" ng-controller="shareCtrl">
+
+				<a class="lienOption" href="">
+					
+					<div class="optionAcc">
+						<img class="icon-Socmne imgNonActif" src="img/sauvgarde-button.png" />
+						<img class="icon-Socmne imgActif" src="img/sauvgarde-butto-active.png" />
+						<p>Sauvegarder</p>
+					</div>
+				</a>
+				
+				<a class="lienOption" href="" ng-click="partager()">
+					<div class="optionAcc" >
+						<img class="icon-Socmne imgNonActif" src="img/partage-button.png" />
+						<img class="icon-Socmne imgActif" src="img/partage-button-active.png" />
+						<p>Partager</p>
+					</div>
+				</a>
+				
+
+								
+								
+				
+				<a class="lienOption" href="#/postuler/{{IdAnnonce}}" >
+					<div class="optionAcc">
+						<img class="icon-Socmne imgNonActif" src="img/postuler-button.png" />
+						<img class="icon-Socmne imgActif" src="img/postuler-button-active.png" />
+						<p>Postuler</p>
+					</div>
+				</a>
+			</div>
+			
+			<div class="row" ng-controller="MainCtrl">
+			
+					<button ng-click="login()" class="button linkedin_button ion-social-linkedin" > Postuler avec LinkedIn
+					</button>	
+			</div>
+		</div>
+		
+		<div class="row ">
+		
+			<div class="col col-10">
+			</div>
+			
+			<div class="col col-80">
+				<div class="button-bar" ng-class="class">
+				  <a class="button button-small barBoutton {{ class.class1 }}" ng-click="changeClass()" onclick="afficherdiv2('div4','div5');">Offres similaires</a>
+				  <a class="button button-small barBoutton {{ class.class2 }}" ng-click="changeClass()" onclick="afficherdiv2('div5','div4');"> Offres autour de moi</a>
+				</div>
+			</div>
+			
+			<div class="col col-10">
+			</div>
+			
+		</div> 
+		
+		<ion-scroll direction="x" class="noScroll" id="div4" scrollbar-x="false">
+		
+            <div class="row">
+			
+                <div class="divOffre col col-75"><a class="lienAnnonce">
+                    <div class="row">
+                        <div class="col col-90"><p>Conseiller Client Particulier</br><span class="opaGris">Poste basé à Lille</span></p></div>
+						<div class="col"><i class="icon ion-chevron-right opaGris"></i></div>
+					</div>	</a>
+                </div>
+				
+				<div class="divOffre col col-75">
+                    <div class="row">
+                        <div class="col col-90"><p>Conseiller Gestion</br><span class="opaGris">Poste basé à Lens</span></p></div>
+						<div class="col"><i class="icon ion-chevron-right opaGris"></i></div>
+                    </div>
+                </div>
+				
+            </div>
+			
+        </ion-scroll>
+		
+		<ion-scroll direction="x" class="noScroll" id="div5" scrollbar-x="false">
+		
+            <div class="row">
+			
+                <div class="divOffre col col-75"><a class="lienAnnonce">
+                    <div class="row">
+                        <div class="col col-90"><p>Conseiller (autour de moi)</br><span class="opaGris">Poste basé à Lille</span></p></div>
+						<div class="col"><i class="icon ion-chevron-right opaGris"></i></div>
+					</div>	</a>
+                </div>
+				
+				<div class="divOffre col col-75">
+                    <div class="row">
+                        <div class="col col-90"><p>Conseiller (autour de moi)</br><span class="opaGris">Poste basé à Lens</span></p></div>
+						<div class="col"><i class="icon ion-chevron-right opaGris"></i></div>
+                    </div>
+                </div>
+				
+            </div>
+			
+        </ion-scroll>
+
+		<div class="row">
+			<h5 class="travCmne">Travailler au Crédit Mutuel Nord Europe</h5>
+		</div>
+
+		</div>
+	</ion-content>
+	
+</ion-view>

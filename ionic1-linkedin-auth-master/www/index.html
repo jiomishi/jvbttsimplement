@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+  <title></title>
+  <link rel="manifest" href="manifest.json">
+
+    <!-- un-comment this code to enable service worker
+    <script>
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('service-worker.js')
+          .then(() => console.log('service worker installed'))
+          .catch(err => console.log('Error', err));
+      }
+    </script>-->
+
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <link href="css/ionic.app.css" rel="stylesheet">
+    -->
+
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+
+    <script src="lib/ngCordova/dist/ng-cordova.js"></script>
+
+    <script src="lib/ionic-ratings/dist/ionic-ratings.min.js"></script>
+
+
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="cordova.js"></script>
+
+    <!-- your app's js -->
+    <script src="js/app.js"></script>
+    <script src="js/controllers.js"></script>
+    <script src="js/services.js"></script>
+  
+
+  <script src="lib/ngCordova/dist/ng-cordova.js"></script>
+  <script src="lib/ng-cordova-oauth/dist/ng-cordova-oauth.min.js"></script>
+</head>
+<body ng-app="starter">
+<ion-nav-bar class="mynavbar" align-title="center" ng-controller="MyController">
+			
+			<ion-nav-back-button side="left" class="button button-navbar button-icon ion-ios-arrow-left" >	
+			</ion-nav-back-button>
+			<ion-nav-buttons side="right" >
+				<button  class="button button-navbar2 button-icon ion-navicon" ng-click="modal.show()">
+				</button>
+			</ion-nav-buttons>
+		</ion-nav-bar>
+  
+    <ion-nav-view>
+		
+		<div id="shadowing"></div>
+	</ion-nav-view>
+<!--
+    <div ng-controller="MainCtrl">
+      <div style="margin:0 10px">
+        <button ng-click="login()" type="button" style="background-color: #256CA5;color:white" class="button icon-left ion-social-linkedin button-block ">Sign in with LinkedIn
+        </button>
+      </div>
+    </div>
+	-->
+
+</body>
+</html>

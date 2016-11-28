@@ -1,0 +1,108 @@
+<ion-view class="title" view-title="Postuler" ng-controller="MailgunController">
+
+<ion-content class="has-header SOCMNE-home"  ng-controller="ExampleController">
+
+	<div ng-controller="AnnonceCtrl">
+	<div class="row">
+		<div class="col col-80 col-offset-20"><p class="text-title">Je postule à l'offre de {{Intitule}}</p></div>
+	</div>
+	<div class="row">
+		<div class="col col-75 col-offset-10"><p class="poste" >Poste basé à {{Localisation}}</p></div>
+	</div>	
+	</div>
+		<div class="card" >
+		
+		<div class="row">
+			<div class="col col-90 col-offset-10 column-intitulé"><p class="text-title-link">Informations</p></div>
+		</div>
+		<div class="row">
+			<div class="col col-90 column-connexion">
+			<label class="item item-input item-input-connexion">
+				<input type="text" placeholder="Nom" id="firstName_input">
+			</label>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col col-90 column-connexion">
+			<label class="item item-input item-input-connexion">
+				<input type="text" placeholder="Prenom" id="lastName_input">
+			</label>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col col-90 column-connexion">
+			<label class="item item-input item-input-connexion">
+				<input type="text" placeholder="Localisation" id="localisation">
+			</label>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col col-90 column-connexion">
+			<label class="item item-input item-input-connexion">
+				<input type="text" placeholder="Situation" id="situation_input">
+			</label>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col col-90 column-connexion">
+			<label class="item item-input item-input-connexion">
+				<input type="text" placeholder="Path" id="path_input">
+			</label>
+			</div>
+		</div>
+	</div>
+	<div class="card">
+		<div class="row">
+			<div class="col col-80 "><p class="text-title-link">Envoyez nous votre tweet de motivation!</p>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col col-100 ">
+			<label class="item item-input ">
+				<textarea id="tweetInput" type="text" placeholder="Démarquez-vous en 150 caractères!" maxlength="150" ng-model="tweetInput" ></textarea>
+			</label>
+			</div>
+		</div>
+		<div class="row"  >
+			<div class="col col-80 column-connexion" ><button class="button button-block validation_button" style="text-transform:uppercase" ng-click="saveData()" > Valider </button></div>
+		</div>
+		
+	</div>
+
+
+
+	
+	<p class="text-info-title">Créer ou importer un profil: pour quoi faire ?</p>
+	
+	<ul class="my-nav">
+	
+		<li><span>Gagnez du temps ! Importez directement vos informations linkedin* pour créer votre profil !</span></li>
+		<li><span>Sinon complétez le formulaire et créez votre profil SoJobs via l'application</span></li>
+		<li><span>Utilisez-le ensuite pour postuler à nos offres, les sauvegarder et suivre votre parcours</span></li>
+		<li><span>Le tweet n'est destination qu'aux équipes du CMNE</span></li>
+		
+	</ul>
+
+	
+	<p class="star"> *: les données collectées ne sont pas exploitées..</p>	
+	
+	<div>
+	
+		<span id="idResp" style="display:none;"> {{IdResponsableRH}}</span>
+		<span id="nivExp" style="display:none;"> {{NiveauxExperience}}</span>
+		<span id="nivForm" style="display:none;"> {{NiveauxFormation}}</span>
+		<span id="intitule" style="display:none;"> {{Intitule}}</span>
+		<span id="localisation" style="display:none;"> {{Localisation}}</span>
+		<span id="datePub" style="display:none;"> {{DatePublication}}</span>
+		<span id="dateLim" style="display:none;"> {{DateLimite}}</span>
+		
+		<a href="#"><button class="button button-block button-positive" ng-click="send(tweetInput)">
+			Postuler
+		</button>
+		</a>
+	</div>
+		
+	</ion-content>
+
+</ion-view>

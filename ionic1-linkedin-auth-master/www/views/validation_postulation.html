@@ -1,0 +1,57 @@
+<ion-view class="title" view-title="validation" ng-controller="testController">
+
+	<ion-content class="has-header has-subheader gris" ng-controller="MailgunController">
+		<div ng-controller="ExampleController">
+		<div  ng-controller="AnnonceCtrl">
+		<div class="row">
+		<div class="col col-80 col-offset-20"><p class="text-title">Vous postulez à l'offre de {{Intitule}}</p></div>
+	</div>
+	<div class="row">
+		<div class="col col-75 col-offset-10"><p class="poste" >Poste basé à {{Localisation}}</p></div>
+	</div>	
+	</div>
+	</div>
+		<div class="card" >
+
+		<div class="item item-avatar personal">
+			<img class="avatar" src="img/ben.png">
+			<h2 id="name" class="name">Prenom NOM</h2>
+			<p id="localisation" class="localisation"> lieu inconnu</p>
+		</div>
+
+		<div class="item">
+			<p class="intitulé">Position :</p>
+
+			<div class="col col-90 column-connexion">
+			<label class="item item-input item-input-connexion">
+				<input id="situation" type="text" ></input>
+			</label>
+			</div>
+			
+			
+			<p class="intitulé">Piece jointe/page web :</p>
+			
+			<div class="col col-90 column-connexion">
+			<label class="item item-input item-input-connexion">
+				<input type="text" id="path"></input>
+			</label>
+			
+			</div>
+
+			<p class="intitulé">Commentaire :</p>
+			
+			<div class="col col-90 column-connexion">
+			<label class="item item-input item-input-connexion">
+				<textarea id="tweetInput" type="text" placeholder="Démarquez-vous en 150 caractères!" maxlength="150" ng-model="tweetInput" >
+				</textarea>
+			</label>
+			</div>
+
+			<div class="row"  >
+			<div class="col col-90 column-connexion" ><button class="button button-block validation_button" style="text-transform:uppercase" ng-click="" > Valider ma candidature </button></div>
+		</div>
+		</div>
+		</div>
+	</ion-content>
+	
+</ion-view>

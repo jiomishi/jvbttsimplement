@@ -1,0 +1,53 @@
+<ion-view class="title" view-title="Postuler">
+	<ion-content class="has-header has-subheader gris">
+
+
+	<div class="row">
+		<hr class="topbarre"/>
+<ion-list>
+
+  <ion-checkbox ng-model="filter.red">Offre RH</ion-checkbox>
+  <ion-checkbox ng-model="filter.yellow">Offre commerciale</ion-checkbox>
+  <ion-checkbox ng-model="filter.pink">Offre en ingénérie</ion-checkbox>
+
+</ion-list>
+</div>
+
+<div class="list">
+
+  <label class="item item-input item-select">
+    <div class="input-label">
+      Poste
+    </div>
+    <select>
+      <option>RH</option>
+      <option selected>Commerce</option>
+      <option>Ingé</option>
+    </select>
+  </label>
+  
+  <label class="item item-input item-select">
+    <div class="input-label">
+      Lieu
+    </div>
+    <select>
+      <option>Lille</option>
+      <option selected>Wazemmes</option>
+      <option>Eurathec</option>
+    </select>
+  </label>
+  
+  <label class="item item-input item-select">
+    <div class="input-label">
+      Contrat
+    </div>
+    <select>
+      <option>CDI</option>
+      <option selected>CDD</option>
+      <option>Stage</option>
+    </select>
+  </label>
+
+</div>
+	</ion-content>
+</ion-view>
