@@ -1,56 +1,53 @@
 <ion-view class="title" view-title="Profil">
 
-	<ion-content class="has-header has-subheader gris" ng-controller="testController">
+	<ion-content class="has-header has-subheader gris" ng-controller="ModifProfil">
 
 		
 
-		<div class="divBen">
-			<img class="imgBen" src="img/ben.png">
-			<p id="name"></p>
-			<p id="localisation"></p>
+		<div class="divBen item-avatar personal">
+			<img id="picture"  class="profilAvatar"></img>
+			<input id="name" placeholder="t"></input>
+			<input id="lastName"></input>
+			<input id="localisation"></input>
 		</div>
 		
 		<div class="list card">
 		
-			<div class="item item-divider">
-				Coordonnées
-			</div>
-			
-			<div class="item item-text-wrap">
-				<input id="situation">
-					
-				</input>
-
+			<p class="intitulé">Position :</p>
+			<div class="col col-90 column-connexion">
+			<label class="item item-input item-input-connexion">
+				<input id="situation" type="text" ></input>
+			</label>
 			</div>
 
 		</div>
 		<div class="list card">
 		
-			<div class="item item-divider">
-				Piece jointe ou page LinkedIn
-			</div>
+			<p class="intitulé">Piece jointe/page web :</p>
 			
-			<div class="item item-text-wrap">
-				<input id="path">
-					
-				</input>
-
+			<div class="col col-90 column-connexion">
+			<label class="item item-input item-input-connexion">
+				<input type="text" id="path"></input>
+			</label>
+			
 			</div>
 
 		</div>
 		<div class="list card">
 		
-			<div class="item item-divider">
-				Commentaire de 150 caracteres
-			</div>
 			
-			<div class="item item-text-wrap">
-				<textarea id="tweetInput" type="text" placeholder="Démarquez-vous en 150 caractères!" maxlength="150">
-					
+			<p class="intitulé">Commentaire :</p>
+			
+			<div class="col col-90 column-connexion">
+			<label class="item item-input item-input-connexion">
+				<textarea id="tweet" type="text" placeholder="Démarquez-vous en 150 caractères!" maxlength="150" ng-model="tweetInput" >
 				</textarea>
-
+			</label>
 			</div>
 
+		</div>
+		<div class="row"  >
+			<div class="col col-80 col-offset-10 " ><button class="button button-block validation_button" style="text-transform:uppercase" ng-click="modifer()" > modifier </button></div>
 		</div>
 		
 		

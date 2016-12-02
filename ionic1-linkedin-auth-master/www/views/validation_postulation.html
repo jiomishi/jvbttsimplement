@@ -1,22 +1,21 @@
-<ion-view class="title" view-title="validation" ng-controller="testController">
+<ion-view class="title" view-title="validation" ng-controller="MailgunController">
 
-	<ion-content class="has-header has-subheader gris" ng-controller="MailgunController">
-		<div ng-controller="ExampleController">
-		<div  ng-controller="AnnonceCtrl">
+	<ion-content class="has-header has-subheader gris" ng-controller="testController">
+
+	
 		<div class="row">
-		<div class="col col-80 col-offset-20"><p class="text-title">Vous postulez à l'offre de {{Intitule}}</p></div>
-	</div>
-	<div class="row">
-		<div class="col col-75 col-offset-10"><p class="poste" >Poste basé à {{Localisation}}</p></div>
-	</div>	
-	</div>
-	</div>
+			<div class="col col-offset-20"><p><u>Vous posutulez à une offre de :</u><p></div>
+		</div>
+		<div class="row">
+			<h5 class="titre">{{Intitule}}</h5>
+		</div>
+
 		<div class="card" >
 
 		<div class="item item-avatar personal">
-			<img class="avatar" src="img/ben.png">
+			<img id="picture" class="avatar"></img>
 			<h2 id="name" class="name">Prenom NOM</h2>
-			<p id="localisation" class="localisation"> lieu inconnu</p>
+			<p id="localisation" class="lieu"> lieu inconnu</p>
 		</div>
 
 		<div class="item">
@@ -42,14 +41,23 @@
 			
 			<div class="col col-90 column-connexion">
 			<label class="item item-input item-input-connexion">
-				<textarea id="tweetInput" type="text" placeholder="Démarquez-vous en 150 caractères!" maxlength="150" ng-model="tweetInput" >
+				<textarea id="tweet" type="text" placeholder="Démarquez-vous en 150 caractères!" maxlength="150" ng-model="tweetInput" >
 				</textarea>
 			</label>
 			</div>
 
+			
 			<div class="row"  >
-			<div class="col col-90 column-connexion" ><button class="button button-block validation_button" style="text-transform:uppercase" ng-click="" > Valider ma candidature </button></div>
+			<div class="col col-90 column-connexion" ><button class="button button-block validation_button" style="text-transform:uppercase" ng-click="send(name,localisation,situation,url,tweet)" > Valider ma candidature </button></div>
+		
 		</div>
+			<span id="idResp" style="display:none;"> {{IdResponsableRH}}</span>
+			<span id="nivExp" style="display:none;"> {{NiveauxExperience}}</span>
+			<span id="nivForm" style="display:none;"> {{NiveauxFormation}}</span>
+			<span id="intitule" style="display:none;"> {{Intitule}}</span>
+			<span id="localisation" style="display:none;"> {{Localisation}}</span>
+			<span id="datePub" style="display:none;"> {{DatePublication}}</span>
+			<span id="dateLim" style="display:none;"> {{DateLimite}}</span>
 		</div>
 		</div>
 	</ion-content>

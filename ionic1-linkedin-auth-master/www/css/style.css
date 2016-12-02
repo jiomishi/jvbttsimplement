@@ -586,6 +586,12 @@ padding: 0%;
 	height: 100px;
 }
 
+#tweet{
+	background-color: #f4f6f5;
+	border-radius: 5px;
+	height: 100px;
+}
+
 /*feedback*/
 .rating {
    direction: rtl;
@@ -684,4 +690,17 @@ background-color:green;}
 
 .localisation{
 	margin-left:35%;
+}
+
+.lieu{
+	margin-left:35%;
+}
+
+.profilAvatar{
+	margin-left:25%;
+}
+
+.divBen input{
+	margin-left:10%;
+	width:120px;
 }

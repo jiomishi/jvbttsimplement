@@ -32,48 +32,82 @@ CMNEApp.config(function($ionicConfigProvider) {
   });
 })
 
+
+
 .controller("ExampleController", function($scope, $state){
 	
+
 	
 	$scope.saveData= function(){
 		var userName=window.localStorage.getItem("firsName");
-		if(document.getElementById("firstName_input").value!= "" && document.getElementById("firstName_input").value != userName ){
-		window.localStorage.setItem("firsName", document.getElementById("firstName_input").value);
-		}
 		var lastName=window.localStorage.getItem("lastName");
-		if(document.getElementById("lastName_input").value!= "" && document.getElementById("lastName_input").value != lastName ){
-		window.localStorage.setItem("lastName", document.getElementById("lastName_input").value);
-		}
 		var localisation=window.localStorage.getItem("localisation");
-		if(document.getElementById("localisation").value!= "" && document.getElementById("localisation").value != localisation ){
-		window.localStorage.setItem("localisation", document.getElementById("localisation").value);
-		}
-		
 		var situation=window.localStorage.getItem("situation");
-		if(document.getElementById("situation_input").value!= "" && document.getElementById("situation_input").value != situation ){
-		window.localStorage.setItem("situation", document.getElementById("situation_input").value);
-		}
 		var path=window.localStorage.getItem("path");
-		if(document.getElementById("path_input").value!= "" && document.getElementById("path_input").value != path ){
-		window.localStorage.setItem("path", document.getElementById("path_input").value);
-		}
 		var tweet=window.localStorage.getItem("tweet");
-		if(document.getElementById("tweetInput").value!= "" && document.getElementById("tweetInput").value != tweet ){
-		window.localStorage.setItem("tweet", document.getElementById("tweetInput").value);
-		}
-		$state.go('validation');
+		
+		
+		
+			if(document.getElementById("firstName_input").value!= "" && document.getElementById("lastName_input").value!= "" && document.getElementById("situation_input").value!= "")
+			{
+		
+					window.localStorage.setItem("firsName", document.getElementById("firstName_input").value);
+					window.localStorage.setItem("lastName", document.getElementById("lastName_input").value);
+					window.localStorage.setItem("situation", document.getElementById("situation_input").value);
+					
+				if(document.getElementById("position_input").value!= "" ){
+					window.localStorage.setItem("localisation", document.getElementById("position_input").value);
+				}
+		
+				if(document.getElementById("path_input").value!= "" && document.getElementById("path_input").value != path ){
+					window.localStorage.setItem("path", document.getElementById("path_input").value);
+				}
+	
+				if(document.getElementById("tweetInput").value!= "" && document.getElementById("tweetInput").value != tweet ){
+					window.localStorage.setItem("tweet", document.getElementById("tweetInput").value);
+				}
+				window.location.reload(true);
+			$state.go('validation');
+			
+			}
+			else{
+				alert("Vous n'avez pas remplis les champs obligatoires");
+			}
+	
 		
 	}
+	
 
 	
 })
 
 .controller("testController", function($scope){
 	
+	
+	var intitule=window.localStorage.getItem("intitule");
+	$scope.Intitule = intitule;
+	var IdResponsableRH=window.localStorage.getItem("IdResponsableRH");
+	$scope.IdResponsableRH = IdResponsableRH;
+	var NiveauxExperience=window.localStorage.getItem("NiveauxExperience");
+	$scope.NiveauxExperience = NiveauxExperience;
+	var NiveauxFormation=window.localStorage.getItem("NiveauxFormation");
+	$scope.NiveauxFormation = NiveauxFormation;
+	var Localisation=window.localStorage.getItem("Localisation");
+	$scope.Localisation = Localisation;
+	var DatePublication=window.localStorage.getItem("DatePublication");
+	$scope.DatePublication = DatePublication;
+	var DateLimite=window.localStorage.getItem("DateLimite");
+	$scope.DateLimite = DateLimite;
+	
 		var userName=window.localStorage.getItem("firsName");
 		var lastName=window.localStorage.getItem("lastName");
 		if(userName!= "" && lastName!="" && lastName!= null && userName!= null){
 			document.getElementById("name").textContent=userName+" "+lastName;
+		}
+		
+		var picture=window.localStorage.getItem("picture");
+		if(picture!= "" && picture!= null){
+			document.getElementById("picture").src=picture;
 		}
 		
 		var localisation=window.localStorage.getItem("localisation");
@@ -93,13 +127,52 @@ CMNEApp.config(function($ionicConfigProvider) {
 		
 		var tweet=window.localStorage.getItem("tweet");
 		if(tweet!= "" && tweet!= null){
-		document.getElementById("tweetInput").placeholder=tweet;;
+		document.getElementById("tweet").placeholder=tweet;
 		}
 		
 		
 	})
+	
+	
+/*.controller("ProfilController", function($scope){
+	
+		var userName=window.localStorage.getItem("firsName");
+		var lastName=window.localStorage.getItem("lastName");
+		if(userName!= "" && lastName!="" && lastName!= null && userName!= null){
+			document.getElementById("name").textContent=userName+" "+lastName;
+		}
+		
+		var picture=window.localStorage.getItem("picture");
+		if(picture!= "" && picture!= null){
+			document.getElementById("picture").src=picture;
+		}
+		
+		
+		var localisation=window.localStorage.getItem("localisation");
+		if(localisation!= "" && localisation!= null){
+			document.getElementById("position").textContent=localisation;
+		}
+		
+		var situation=window.localStorage.getItem("situation");
+		if(situation!= "" && situation!= null){
+		document.getElementById("situation").placeholder=situation;
+		}
+		
+		var path=window.localStorage.getItem("path");
+		if(path!= "" && path!= null){
+		document.getElementById("path").placeholder=path;
+		}
+		
+		var tweet=window.localStorage.getItem("tweet");
+		if(tweet!= "" && tweet!= null){
+		document.getElementById("tweetInput").placeholder=tweet;;
+		}
+		
+		
+	})*/
+	
 
-.controller("MainCtrl", function ($scope,$cordovaOauth,$http,$state) {
+.controller('MainCtrl', function ($scope,$cordovaOauth,$http,$state) {
 
   $scope.login = function () {
     $cordovaOauth.linkedin( '78wflk3z27izlj', 'Ra6bmsXc0bA6TvdO' ,  ['r_basicprofile', 'r_emailaddress'],{'redirect_uri':''}).then(function (d) {
@@ -110,23 +183,22 @@ CMNEApp.config(function($ionicConfigProvider) {
         }).then(function (data) {
 
           if(data.status == 200){
-
             var userData = data.data;
-				console.log('user profile',userData);
-			alert('successful login');
-			alert(JSON.stringify(userData));
+			console.log('user profile',userData);
 			test=JSON.parse(JSON.stringify(userData));
-			var firstName=test['firstName'].toString();
+			firstName=test['firstName'].toString();
+
 			window.localStorage.setItem("firsName",firstName);
 			var lastName=test['lastName'].toString();
 			window.localStorage.setItem("lastName",lastName);
-			var pictureUrl=test['picture-url'];
-			var summary=test['summary'];
-			var position=getAsJsonObject("location").getAsJsonObject("name").toString();
-			alert(position);
-			var profileUrl=test['publicProfileUrl'];
-			window.localStorage.setItem("path",profileUrl);			
+
+			var pictureUrl=test['pictureUrl'];
+			window.localStorage.setItem("picture",pictureUrl);
+			var profileUrl=test['publicProfileUrl'].toString();
+			window.localStorage.setItem("path",profileUrl);	
+			window.location.reload(true);
 			$state.go('validation');
+			window.location.reload(true);
           }
 		    
         },function(e){
@@ -137,11 +209,82 @@ CMNEApp.config(function($ionicConfigProvider) {
       function (error) {
         console.error('linkedin sign in error',error);
       });
-	  $state.go('validation');
+	  
+	  
   };
 })
+
+
+
+.controller('AnnonceTest', function($scope){
+	 $scope.Intitule = Annonce.get();
+})
+
+.controller('ModifProfil', function ($scope) {
+	
+	
+	
+	var firstName=window.localStorage.getItem("firsName");
+	var lastName=window.localStorage.getItem("lastName");
+	var localisation=window.localStorage.getItem("localisation");
+	var situation=window.localStorage.getItem("situation");
+	var path=window.localStorage.getItem("path");
+	var picture=window.localStorage.getItem("picture");
+	
+	document.getElementById("name").placeholder=firstName;
+	document.getElementById("lastName").placeholder=lastName;
+	document.getElementById("localisation").placeholder=localisation;
+	document.getElementById("situation").placeholder=situation;
+	document.getElementById("path").placeholder=path;
+	document.getElementById("picture").src=picture;
+
+  $scope.modifer = function () {
+	
+			window.location.reload(true);
+			var firstName_input = document.getElementById("name").value;
+			
+			if(firstName_input!= ""   && firstName_input!= null && firstName_input!=firstName)
+			{
+			window.localStorage.setItem("firsName",firstName_input);
+			}
+
+			var lastName_input = document.getElementById("lastName").value;
+			
+			if(lastName_input!= ""   && lastName_input!= null && lastName_input!=firstName)
+			{
+			window.localStorage.setItem("firsName",firstName_input);
+			}
+			
+			
+			var position_input = document.getElementById("localisation").value;
+			
+			if(position_input!= ""   && position_input!= null && position_input!=localisation)
+			{
+			window.localStorage.setItem("localisation",position_input);
+			}
+			
+			var situation_input = document.getElementById("situation").value;
+			
+			if(situation_input!= ""   && situation_input!= null && situation_input!=situation)
+			{
+			window.localStorage.setItem("situation",situation_input);
+			}
+			
+			var path_input = document.getElementById("path").value;
+			
+			if(path_input!= ""   && path_input!= null && path_input!=path)
+			{
+			window.localStorage.setItem("path",path_input);
+			}
+			window.location.reload(true)
+          };
+		  
+		    
+    
+  })
+
 /*Envoi de mails*/
-.controller("MailgunController", function($scope, $http, $ionicPopup, $timeout) {
+.controller("MailgunController", function($scope, $http, $ionicPopup, $timeout, $state) {
  
     var mailgunUrl = "sandboxdbeb402b833c42619487fbce8e2a8850.mailgun.org";
     var mailgunApiKey = window.btoa("api:key-0c233689883f37926dbc2f8e118393d0")
@@ -159,7 +302,8 @@ CMNEApp.config(function($ionicConfigProvider) {
     }, 3000);
    };
  
-    $scope.send = function(tweetInput) {
+    $scope.send = function() {
+	
     var intitule = document.getElementById('intitule').textContent;
     var idResp = document.getElementById('idResp').textContent;
     var nivExp = document.getElementById('nivExp').textContent;
@@ -167,10 +311,15 @@ CMNEApp.config(function($ionicConfigProvider) {
     var localisation = document.getElementById('localisation').textContent;
     var datePub = document.getElementById('datePub').textContent;
     var dateLim = document.getElementById('dateLim').textContent;
-    
-    
-    var objet = idResp+" a reçu une nouvelle Candidature de Dupont Dupont";
-    var message = "Le candidat Dupont Dupont a soumis sa candidature pour l'offre : "+intitule+". \nMise en ligne le "+datePub+" expirant le "+dateLim+". \nLe poste est basé à "+localisation+" \nPour les niveaux d'expérience : "+nivExp+" \nEt un niveau de formation :"+nivForm+"\n\n\nTweet de motivation :"+tweetInput
+    var name = document.getElementById("name").textContent;
+    var lieu = document.getElementById("localisation").textContent;
+    var situation = document.getElementById('situation').placeholder;
+    var url = document.getElementById('path').placeholder;
+    var picture = document.getElementById('picture').src;
+    var tweetInput = document.getElementById('tweet').placeholder
+	
+    var objet = idResp+" a reçu une nouvelle Candidature de "+name;
+    var message = "Le candidat: "+name +"\n ressemblant à : "+picture+"\nhabitant à: "+lieu+"\n dont la situation actuelle est:"+situation+"\n dont le linkedin est: "+url+"\na soumis sa candidature pour l'offre : "+intitule+". \nMise en ligne le "+datePub+" expirant le "+dateLim+". \nLe poste est basé à "+localisation+" \nPour les niveaux d'expérience : "+nivExp+" \nEt un niveau de formation :"+nivForm+"\n\n\nTweet de motivation :"+tweetInput
     
         $http(
             {
@@ -192,6 +341,7 @@ CMNEApp.config(function($ionicConfigProvider) {
       title: 'Félicitation',
       template: "Vous venez de postuler à l'une de nos offres"
     });
+	$state.go('accueil');
     };
   
   $scope.sendFeedback = function(feedbackInput) {
@@ -379,10 +529,7 @@ $scope.showPopup = function() {
         url: '/validation',
         templateUrl: 'views/validation_postulation.html'
       })
-	.state('testWS', {
-      url: '/testWS',
-      templateUrl: 'views/testWS.html'
-    })
+	
 
   .state('toutesLesAnnonces', {
       url: '/toutesLesAnnonces/:recherche',

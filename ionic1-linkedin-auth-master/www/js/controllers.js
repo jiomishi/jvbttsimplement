@@ -15,7 +15,9 @@ angular.module('starter.controllers', [])
 })
 
 
+
 .controller('AnnonceCtrl', function($scope, $stateParams, annoncesService) {
+
 
 	annoncesService.getAnnonce($stateParams.IdAnnonce).then(function(annonce){
 		$scope.annonce = annonce.data;
@@ -26,36 +28,43 @@ angular.module('starter.controllers', [])
 			$scope.Intitule = "Non Renseigné";
 		} else {
 			$scope.Intitule = annoncesService.decodeHtml($scope.annonce.Intitule);
+			window.localStorage.setItem("intitule",annoncesService.decodeHtml($scope.annonce.Intitule));
 		}
-		
+						
+			
 		if($scope.NiveauxExperience = annoncesService.decodeHtml($scope.annonce.NiveauxExperience).trim() == ""){
 			$scope.NiveauxExperience = "Non Renseigné";
 		} else {
 			$scope.NiveauxExperience = annoncesService.decodeHtml($scope.annonce.NiveauxExperience);
+			window.localStorage.setItem("NiveauxExperience",annoncesService.decodeHtml($scope.annonce.NiveauxExperience));
 		}
 		
 		if($scope.NiveauxFormation = annoncesService.decodeHtml($scope.annonce.NiveauxFormation).trim() == ""){
 			$scope.NiveauxFormation = "Non Renseigné";
 		} else {
 			$scope.NiveauxFormation = annoncesService.decodeHtml($scope.annonce.NiveauxFormation);
+			window.localStorage.setItem("NiveauxFormation",annoncesService.decodeHtml($scope.annonce.NiveauxFormation));
 		}
 		
 		if($scope.Localisation = annoncesService.decodeHtml($scope.annonce.Localisation).trim() == ""){
 			$scope.Localisation = "Non Renseigné";
 		} else {
 			$scope.Localisation = annoncesService.decodeHtml($scope.annonce.Localisation);
+			window.localStorage.setItem("Localisation",annoncesService.decodeHtml($scope.annonce.Localisation));
 		}
 		
 		if($scope.DatePublication = annoncesService.decodeHtml($scope.annonce.DatePublication).trim() == ""){
 			$scope.DatePublication = "Non Renseigné";
 		} else {
 			$scope.DatePublication = annoncesService.decodeHtml($scope.annonce.DatePublication);
+			window.localStorage.setItem("DatePublication",annoncesService.decodeHtml($scope.annonce.DatePublication));
 		}
 		
 		if(annoncesService.decodeHtml($scope.annonce.DateLimite).trim() == ""){
 			$scope.DateLimite = "Non Renseigné";
 		} else {
 			$scope.DateLimite = annoncesService.decodeHtml($scope.annonce.DateLimite);
+			window.localStorage.setItem("DateLimite",annoncesService.decodeHtml($scope.annonce.DateLimite));
 		}
 		
 		if($scope.NatureContrat = annoncesService.decodeHtml($scope.annonce.NatureContrat).trim() == ""){
@@ -110,6 +119,7 @@ angular.module('starter.controllers', [])
 			$scope.IdResponsableRH = "Non Renseigné";
 		} else {
 			$scope.IdResponsableRH = annoncesService.decodeHtml($scope.annonce.IdResponsableRH);
+			window.localStorage.setItem("IdResponsableRH",annoncesService.decodeHtml($scope.annonce.IdResponsableRH));
 		}
 		
 	});
@@ -165,6 +175,7 @@ angular.module('starter.controllers', [])
 	};
 	$scope.closeModal = function() {
 	$scope.modal.hide();
+	window.location.reload(true);
 	};
 	// Cleanup the modal when we're done with it!
 	$scope.$on('$destroy', function() {
