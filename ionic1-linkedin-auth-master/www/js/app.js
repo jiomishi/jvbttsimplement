@@ -36,8 +36,8 @@ CMNEApp.config(function($ionicConfigProvider) {
 
 .controller("ExampleController", function($scope, $state){
 	
-
-	
+var test=window.localStorage.getItem("test");
+	if(test==null){
 	$scope.saveData= function(){
 		var userName=window.localStorage.getItem("firsName");
 		var lastName=window.localStorage.getItem("lastName");
@@ -66,6 +66,7 @@ CMNEApp.config(function($ionicConfigProvider) {
 				if(document.getElementById("tweetInput").value!= "" && document.getElementById("tweetInput").value != tweet ){
 					window.localStorage.setItem("tweet", document.getElementById("tweetInput").value);
 				}
+				window.localStorage.setItem("test", '1');
 				window.location.reload(true);
 			$state.go('validation');
 			
@@ -74,7 +75,11 @@ CMNEApp.config(function($ionicConfigProvider) {
 				alert("Vous n'avez pas remplis les champs obligatoires");
 			}
 	
-		
+	}
+	}
+	else{
+		window.location.reload(true);
+		$state.go('validation');
 	}
 	
 
@@ -187,16 +192,32 @@ CMNEApp.config(function($ionicConfigProvider) {
 			console.log('user profile',userData);
 			test=JSON.parse(JSON.stringify(userData));
 			firstName=test['firstName'].toString();
-
-			window.localStorage.setItem("firsName",firstName);
+			if(firstName!="" && firstName!=null){
+				window.localStorage.setItem("firsName",firstName);
+			}
+			
+			var localisation=test['location']['name'].toString();
+			if(localisation!="" && localisation!=null){
+			window.localStorage.setItem("localisation",localisation);
+			}
+			var situation=test['industry'].toString();
+			if(situation!="" && situation!=null){
+			window.localStorage.setItem("situation",situation);
+			}
 			var lastName=test['lastName'].toString();
+			if(lastName!="" && lastName!=null){
 			window.localStorage.setItem("lastName",lastName);
-
+			}
 			var pictureUrl=test['pictureUrl'];
+			if(pictureUrl!="" && pictureUrl!=null){
 			window.localStorage.setItem("picture",pictureUrl);
+			}
 			var profileUrl=test['publicProfileUrl'].toString();
+			if(profileUrl!="" && profileUrl!=null){
 			window.localStorage.setItem("path",profileUrl);	
+			}
 			window.location.reload(true);
+			window.localStorage.setItem("test", '1');
 			$state.go('validation');
 			window.location.reload(true);
           }
@@ -375,31 +396,43 @@ CMNEApp.config(function($ionicConfigProvider) {
     });
     };
 
-    $scope.sendMotivation = function(prenomInput,nomInput,coordInput,formInput,expProInput,motivInput) {
+    $scope.sendMotivation = function(prenomInput,nomInput,mailInput,coordInput,formInput,expProInput,motivInput) {
 
-    var objet = "Candidature spontanée de "+prenomInput+" "+nomInput;
-    var message = "Le candidat "+prenomInput+" "+nomInput+" nous fait part de sa motivation pour rejoindre nos rangs :\n\nSes coordonnées : "+coordInput+"\nSa formation : "+formInput+"\nSon experience professionnelle : "+expProInput+"\nSa motivation : "+motivInput
+    	if(document.getElementById("prenomInput").value!= "" && document.getElementById("nomInput").value!= "" && document.getElementById("mailInput").value!= "")
+    	{
+    		
+    		var objet = "Candidature spontanée de "+prenomInput+" "+nomInput;
+    		var message = "Le candidat "+prenomInput+" "+nomInput+"qui a pour adresse mail " +mailInput+" nous fait part de sa motivation pour rejoindre nos rangs :\n\n Ses coordonnées : "+coordInput+"\nSa formation : "+formInput+"\nSon experience professionnelle : "+expProInput+"\nSa motivation : "+motivInput
     
-        $http(
-            {
-                "method": "POST",
-                "url": "https://api.mailgun.net/v3/" + mailgunUrl + "/messages",
-                "headers": {
-                    "Content-Type": "application/x-www-form-urlencoded",
-                    "Authorization": "Basic " + mailgunApiKey
-                },
-                data: "from=" + "c.m.candidat.mobile@gmail.com" + "&to=" + "c.m.recrute.mobile@gmail.com" + "&subject=" + objet + "&text=" + message
-            }
-        ).then(function(success) {
-            console.log("SUCCESS " + JSON.stringify(success));
-        }, function(error) {
-            console.log("ERROR " + JSON.stringify(error));
-        });
-    
-    var alertPopup = $ionicPopup.alert({
-      title: 'Merci',
-      template: "Vous venez de nous envoyer votre candidature spontanée."
-    });
+
+		        $http(
+		            {
+		                "method": "POST",
+		                "url": "https://api.mailgun.net/v3/" + mailgunUrl + "/messages",
+		                "headers": {
+		                    "Content-Type": "application/x-www-form-urlencoded",
+		                    "Authorization": "Basic " + mailgunApiKey
+		                },
+		                data: "from=" + "c.m.candidat.mobile@gmail.com" + "&to=" + "c.m.recrute.mobile@gmail.com" + "&subject=" + objet + "&text=" + message
+		            }
+		        ).then(function(success) {
+		            console.log("SUCCESS " + JSON.stringify(success));
+		        }, function(error) {
+		            console.log("ERROR " + JSON.stringify(error));
+		        });
+		    
+		    var alertPopup = $ionicPopup.alert({
+		      title: 'Merci',
+		      template: "Vous venez de nous envoyer votre candidature spontanée."
+		    });
+
+		    	$state.go('accueil');
+   		}
+
+   		else{
+				alert("Vous n'avez pas remplis les champs obligatoires");	
+		}
+
     };
  
 })
